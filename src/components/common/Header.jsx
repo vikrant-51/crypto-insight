@@ -47,19 +47,19 @@ const Header = () => {
       <Box display={{ base: "none", sm: "block", md: "block" }}>
         <NavLinks />
       </Box>
-      {isMenuOpen && <NavLinks />}
+      {isMenuOpen && <NavLinks handler={menuOpenClose}/>}
     </Stack>
   );
 };
 
-const NavLinks = ({ arr = ["Home", "Coins", "Exchanges", "Cart"] }) => (
+const NavLinks = ({ arr = ["Home", "Coins", "Exchanges", "Cart"], handler }) => (
   <Stack
     spacing={7}
     letterSpacing={5}
     justifyContent={"center"}
     direction={{ base: "column", sm: "row", md: "row" }}
   >
-    <ColorModeSwitcher />
+    <ColorModeSwitcher/>
     {arr.map((i) => {
       return (
         <Button
@@ -68,6 +68,7 @@ const NavLinks = ({ arr = ["Home", "Coins", "Exchanges", "Cart"] }) => (
           fontWeight={"700"}
           fontSize={"1.4rem"}
           color={"#bf9853"}
+          onClick={handler}
         >
           <Link to={i === "Home" ? "/" : `${i.toLowerCase()}`}>{i}</Link>
         </Button>
