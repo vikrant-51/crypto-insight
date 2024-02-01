@@ -1,9 +1,9 @@
-import { Box, Button, IconButton, Stack, Text} from "@chakra-ui/react";
+import { Box, Button, IconButton, Stack, Text } from "@chakra-ui/react";
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ColorModeSwitcher from "./ColorModeSwitcher";
-import { SiCardano} from "react-icons/si";
+import { SiCardano } from "react-icons/si";
 import { IoReorderThreeOutline } from "react-icons/io5";
 import { TbArrowsCross } from "react-icons/tb";
 const Header = () => {
@@ -30,7 +30,7 @@ const Header = () => {
       >
         <SiCardano size={"3rem"} color={"#bf9853"} />
         <Text color={"#bf9853"} fontSize={"2.5rem"}>
-          CoinInsight
+          <Link to="/">CoinInsight</Link>
         </Text>
 
         <IconButton
@@ -61,16 +61,18 @@ const NavLinks = ({ arr = ["Home", "Coins", "Exchanges", "Cart"] }) => (
   >
     <ColorModeSwitcher />
     {arr.map((i) => {
-      return <Button
-        variant={"unstyled"}
-        fontWeight={"700"}
-        fontSize={"1.4rem"}
-        color={"#bf9853"}
-      >
-        <Link to={i==="Home" ? "/" : `${i.toLowerCase()}`} >{i}</Link>
-      </Button>;
+      return (
+        <Button
+          key={i}
+          variant={"unstyled"}
+          fontWeight={"700"}
+          fontSize={"1.4rem"}
+          color={"#bf9853"}
+        >
+          <Link to={i === "Home" ? "/" : `${i.toLowerCase()}`}>{i}</Link>
+        </Button>
+      );
     })}
-
   </Stack>
 );
 

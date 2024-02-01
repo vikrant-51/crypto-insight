@@ -1,7 +1,6 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
 const addToCart = createAction("addToCart");
-const increment = createAction("increment");
 const decrement = createAction("decrement");
 const deleteFromCart = createAction("deleteFromCart");
 const calculatePrice = createAction("calculatePrice");

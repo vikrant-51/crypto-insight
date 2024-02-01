@@ -63,7 +63,7 @@ const Exchanges = () => {
 };
 
 const ExchangeCard = ({ name, img, rank, url }) => (
-  <a href={url} target="blank">
+  <a href={url} target="blank" boxShadow={"darl-lg"}>
     <VStack
       w={52}
       shadow={"lg"}

@@ -16,6 +16,7 @@ import {
   StatArrow,
   Badge,
   Progress,
+  Stack,
 } from "@chakra-ui/react";
 import axios from "axios";
 import Loader from "./common/Loader";
@@ -75,7 +76,6 @@ const CoinDetails = () => {
         break;
       default:
         setDays("24h");
-        setLoading(true);
         break;
     }
   };
@@ -108,17 +108,6 @@ const CoinDetails = () => {
         <Loader />
       ) : (
         <>
-          <Box w={"full"} borderWidth={1}>
-            <Chart arr={chartArray} currency={currencySymbol} days={days} />
-          </Box>
-
-          <HStack p={4} overflow={"auto"}>
-            {btns.map((i) => (
-              <Button m={2} key={i} onClick={() => switchChartStats(i)}>
-                {i}
-              </Button>
-            ))}
-          </HStack>
           <RadioGroup value={currency} onChange={setCurrency} p={8}>
             <HStack spacing={4}>
               <Radio value={"inr"}>INR</Radio>
@@ -127,6 +116,18 @@ const CoinDetails = () => {
             </HStack>
           </RadioGroup>
 
+            <Stack direction={{base:"column",sm:"column",md:"column",lg:"row"}}>
+              <Stack direction={{base:"row",sm:"row", md:"row",lg:"column"}} p={4} overflow={"auto"}>
+                {btns.map((i) => (
+                  <Button m={2} key={i} onClick={() => switchChartStats(i)}>
+                    {i}
+                  </Button>
+                ))}
+              </Stack>
+              <Box w={"full"} borderWidth={1}>
+                <Chart arr={chartArray} currency={currencySymbol} days={days} />
+              </Box>
+            </Stack>
           <VStack spacing={4} p={16} alignItems={"flex-start"}>
             <Text fontSize={"small"} alignSelf={"center"} opacity={0.7}>
               Last Updated On {Date(coin.market_data.last_updated)}

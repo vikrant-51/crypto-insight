@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Button,
+  ButtonGroup,
   Card,
   CardFooter,
   Heading,
@@ -10,6 +11,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CoinCard = ({
   id,
@@ -52,7 +54,12 @@ const CoinCard = ({
           css={{ "&:hover": { transform: "scale(1.1)" } }}
         >
           <Image src={img} w={20} h={20} objectFit={"contain"} alt="coin" />
-          <Heading size={"md"} textTransform={"uppercase"} fontFamily={"Roboto"} noOfLines={1}>
+          <Heading
+            size={"md"}
+            textTransform={"uppercase"}
+            fontFamily={"Roboto"}
+            noOfLines={1}
+          >
             {symbol}
           </Heading>
           <Text noOfLines={1}>{name}</Text>
@@ -61,14 +68,25 @@ const CoinCard = ({
           </Text>
         </VStack>
         <CardFooter>
-          <Button
-            colorScheme={"yellow"}
-            onClick={() =>
-              addToCartHandler({ name, price, id, img, symbol,currencySymbol, qty })
-            }
-          >
-            Add To Cart
-          </Button>
+          <ButtonGroup>
+            <Button><Link to={`/coin/${id}`}>View</Link></Button>
+            <Button
+              colorScheme={"yellow"}
+              onClick={() =>
+                addToCartHandler({
+                  name,
+                  price,
+                  id,
+                  img,
+                  symbol,
+                  currencySymbol,
+                  qty,
+                })
+              }
+            >
+              Add To Cart
+            </Button>
+          </ButtonGroup>
         </CardFooter>
       </VStack>
     </Card>
