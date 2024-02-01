@@ -1,6 +1,6 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import React from "react";
-import btcSrc from "../assets/btc.png";
+import btcSrc from "../../assets/btc.png";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -25,14 +25,15 @@ const Home = () => {
         <Image w={"full"} h={"full"} objectFit={"contain"} src={btcSrc} />
       </motion.div>
       <Text
+        textShadow="5px 2px #63171B"
         fontSize={"6xl"}
         textAlign={"center"}
         fontWeight={"thin"}
-        color={"whiteAlpha.700"}
+        color={"#bf9853"}
         mt={"-40px"}
         fontFamily={"Bebas Neue"}
       >
-        VVcrypto
+        Where Knowledge Meets Crypto - CoinInsight.{" "}
       </Text>
     </Box>
   );

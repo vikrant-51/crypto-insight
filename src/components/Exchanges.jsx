@@ -10,8 +10,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-import Loader from "./Loader";
-import ErrorComponent from "./ErrorComponent";
+import Loader from "./common/Loader";
+import ErrorComponent from "./common/ErrorComponent";
 
 const Exchanges = () => {
   const [exchanges, setExchanges] = useState([]);

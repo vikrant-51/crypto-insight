@@ -18,10 +18,10 @@ import {
   Progress,
 } from "@chakra-ui/react";
 import axios from "axios";
-import Loader from "./Loader";
+import Loader from "./common/Loader";
 import { server } from "..";
 import { useParams } from "react-router-dom";
-import ErrorComponent from "./ErrorComponent";
+import ErrorComponent from "./common/ErrorComponent";
 import Chart from "./Chart";
 
 const CoinDetails = () => {

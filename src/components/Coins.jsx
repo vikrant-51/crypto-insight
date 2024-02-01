@@ -1,17 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { server } from "..";
-import {
-  Button,
-  Container,
-  HStack,
-  Radio,
-  RadioGroup,
-} from "@chakra-ui/react";
+import { Button, Container, HStack, Radio, RadioGroup } from "@chakra-ui/react";
 
-import Loader from "./Loader";
+import Loader from "./common/Loader";
 import CoinCard from "./CoinCard";
-import ErrorComponent from "./ErrorComponent";
+import ErrorComponent from "./common/ErrorComponent";
 
 const Coins = () => {
   const [coins, setCoins] = useState([]);
@@ -39,21 +33,21 @@ const Coins = () => {
 
         setCoins(data);
         setLoading(false);
-
       } catch (error) {
-
         setError(true);
         setLoading(false);
-      
       }
     };
     fetchCoins();
   }, [currency, page]);
 
-  if (error) return <ErrorComponent message="Error while fetching Coins!  Refresh your page after few seconds!" />;
+  if (error)
+    return (
+      <ErrorComponent message="Error while fetching Coins!  Refresh your page after few seconds!" />
+    );
 
   return (
-    <Container maxW={"container.xl"}>
+    <Container maxW={"100%"}>
       {loading ? (
         <Loader />
       ) : (
@@ -66,7 +60,7 @@ const Coins = () => {
             </HStack>
           </RadioGroup>
 
-          <HStack wrap={"wrap"} justifyContent={"space-evenly"}>
+          <HStack wrap={"wrap"} rowGap={10} justifyContent={"space-evenly"}>
             {coins.map((i) => {
               return (
                 <CoinCard
@@ -77,6 +71,7 @@ const Coins = () => {
                   symbol={i.symbol}
                   price={i.current_price}
                   currencySymbol={currencySymbol}
+                  qty={1}
                 />
               );
             })}
