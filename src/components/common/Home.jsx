@@ -1,11 +1,11 @@
-import { Box, Image, Text } from "@chakra-ui/react";
+import { Box, Image, Stack, Text } from "@chakra-ui/react";
 import React from "react";
-import btcSrc from "../../assets/btc.png";
+import btcImg from "../../assets/btc.png";
 import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <Box bgColor={"blackAlpha.900"} w={"full"} h={"85vh"}>
+    <Stack bgColor={"blackAlpha.900"} w={"full"} h={"full"}>
       <motion.div
         style={{
           height: "80vh",
@@ -15,14 +15,14 @@ const Home = () => {
         }}
         transition={{
           type: "spring",
-          stiffness: 50, // Adjust the stiffness for bounce intensity
-          damping: 20, // Adjust the damping for bounce duration
+          stiffness: 20, // Adjust the stiffness for bounce intensity
+          damping: 10, // Adjust the damping for bounce duration
           mass: 1,
           repeat: Infinity,
           repeatType: "reverse",
         }}
       >
-        <Image w={"full"} h={"full"} objectFit={"contain"} src={btcSrc} />
+        <Image w={"full"} h={"full"} objectFit={"contain"} src={btcImg} />
       </motion.div>
       <Text
         textShadow="5px 2px #63171B"
@@ -35,7 +35,7 @@ const Home = () => {
       >
         Where Knowledge Meets Crypto - CoinInsight.{" "}
       </Text>
-    </Box>
+    </Stack>
   );
 };
 
